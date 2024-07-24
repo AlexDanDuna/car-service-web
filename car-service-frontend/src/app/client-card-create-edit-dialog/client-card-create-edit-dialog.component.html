@@ -1,0 +1,55 @@
+<div class="container">
+    <div>
+      <h1>{{title}}</h1>
+      <form (ngSubmit)="onSubmit()" #clientCardForm="ngForm">
+        <div class="form-group">
+          <label for="client_first_name">First name: </label>
+          <input type="text" class="form-control" id="client_first_name"
+                 required maxLength="40"
+                 [(ngModel)]="clientCard.client_first_name" name="client_first_name"
+                 #client_first_name="ngModel">
+          <div [hidden]="client_first_name.valid || client_first_name.pristine"
+               class="alert alert-danger">
+            First name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="client_last_name">Last name: </label>
+            <input type="text" class="form-control" id="client_last_name"
+                   required maxlength=40
+                   [(ngModel)]="clientCard.client_last_name" name="client_last_name"
+                   #client_last_name="ngModel">
+            <div [hidden]="client_last_name.valid || client_last_name.pristine"
+                 class="alert alert-danger">
+              Last name is required.
+            </div>
+          </div>        
+  
+        <div class="form-group">
+          <label for="cnp">CNP: </label>
+          <input type="number" class="form-control" id="cnp" required min=1000000000000, max=9999999999999
+                 [(ngModel)]="clientCard.cnp" name="cnp" #cnp="ngModel">
+          <div [hidden]="cnp.valid || cnp.pristine"
+                class="alert alert-danger">
+              CNP must be a non-zero number of exactly 13 digits.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="clientCard.birth_date" required name="birth_date" id="birth_date">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </div>
+
+        <div class="form-group">
+            <input matInput [matDatepicker]="picker2" [(ngModel)]="clientCard.registration_date" required name="registration_date" id="registration_date">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </div>        
+
+        <button type="submit" class="btn btn-success" [disabled]="!clientCardForm.form.valid">{{actionName}}</button>
+        <button type="button" class="btn btn-default" (click)="cancel()"></button>
+     </form>
+    </div>
+</div>

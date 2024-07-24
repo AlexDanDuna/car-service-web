@@ -1,0 +1,17 @@
+.pen-icon-button {
+    color: blue;
+    justify-content: center;
+    align-items: center;
+}
+
+.eraser-icon-button {
+    color: red;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus-icon-button {
+    color: green;
+    justify-content: center;
+    align-items: center;
+}

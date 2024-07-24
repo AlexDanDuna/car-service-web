@@ -1,0 +1,58 @@
+<h1>Client Cards</h1>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <button mat-icon-button class='plus-icon-button' (click)="openDialog()">
+          <mdb-icon fas icon="plus" class="mr-1"></mdb-icon>
+        </button>
+      </div>
+      <div class="col-md-12 mx-auto">
+        <div class="md-form">
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            class="form-control"
+            id="search"
+            mdbInput
+          />
+          <label for="search">Search</label>
+        </div>
+      </div>
+    </div>
+    <table mdbTable class="z-depth-1">
+      <thead>
+        <tr>
+          <th
+            *ngFor="let head of headElements; let i = index"
+            scope="col"
+          >
+            {{head}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let clientCard of currentClientCards; let i = index">
+          <th scope="row" class="align-middle">{{clientCard.id}}</th>
+          <td class="red-text align-middle">{{clientCard.client_first_name}}</td>
+          <td class="red-text align-middle">{{clientCard.client_last_name}}</td>
+          <td class="align-middle">{{clientCard.cnp}}</td>
+          <td class="align-middle">{{clientCard.birth_date}}</td>
+          <td class="align-middle">{{clientCard.registration_date}}</td>
+          <td class="align-middle">
+            <div>
+              <button mat-icon-button class='pen-icon-button' (click)="openDialog(clientCard)">
+                <mdb-icon fas icon="pen" class="mr-1"></mdb-icon>
+              </button>
+              <button mat-icon-button class='eraser-icon-button' (click)="deleteClientCard(clientCard)">
+                <mdb-icon fas icon="eraser" class="mr-1"></mdb-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p></p>
+
+
+  </div>
